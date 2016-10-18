@@ -128,7 +128,6 @@ public class CreditCardEntry extends HorizontalScrollView implements
         CreditEntryFieldBase currentField = creditCardText;
 
         textFourDigits = new TextView(context);
-        textFourDigits.setTextSize(20);
         textFourDigits.setId(R.id.cc_four_digits);
         if (textColor != null) {
             textFourDigits.setTextColor(textColor);
