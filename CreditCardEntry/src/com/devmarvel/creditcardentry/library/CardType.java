@@ -49,7 +49,7 @@ public enum CardType implements Serializable {
     public final int frontResource;
 
   /** drawable for the back of the card */
-    public final int backResource = R.drawable.cc_back;
+    public final int backResource = R.drawable.ic_card_placeholder;
 
     CardType(String name, @DrawableRes int imageResource, String fullRegex, String typeRegex) {
         this.name = name;
