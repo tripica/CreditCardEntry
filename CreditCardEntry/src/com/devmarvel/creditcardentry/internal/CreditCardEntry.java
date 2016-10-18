@@ -9,6 +9,7 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.Point;
+import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Handler;
 import android.os.Parcel;
@@ -672,4 +673,11 @@ public class CreditCardEntry extends HorizontalScrollView implements
         zipCodeText.setHint(text);
     }
 
+    public void setTypeface(Typeface typeface) {
+        creditCardText.setTypeface(typeface);
+        expDateText.setTypeface(typeface);
+        securityCodeText.setTypeface(typeface);
+        zipCodeText.setTypeface(typeface);
+        textFourDigits.setTypeface(typeface);
+    }
 }
