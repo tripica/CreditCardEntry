@@ -59,6 +59,7 @@ public class CreditCardEntry extends HorizontalScrollView implements
     private final Context context;
     // null textColor means we want to use the system default color instead of providing our own.
     private final Integer textColor;
+    private int textSize = 19;
 
     private ImageView cardImage;
     private ImageView backCardImage;
@@ -93,6 +94,7 @@ public class CreditCardEntry extends HorizontalScrollView implements
         } else {
             textColor = null;
         }
+        textSize = typedArray.getDimensionPixelSize(R.styleable.CreditCardForm_text_size, 19);
         typedArray.recycle();
 
         WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
@@ -123,18 +125,21 @@ public class CreditCardEntry extends HorizontalScrollView implements
         creditCardText.setId(R.id.cc_card);
         creditCardText.setDelegate(this);
         creditCardText.setWidth(width);
+        creditCardText.setTextSize(textSize);
         container.addView(creditCardText);
         includedFields.add(creditCardText);
         CreditEntryFieldBase currentField = creditCardText;
 
         textFourDigits = new TextView(context);
         textFourDigits.setId(R.id.cc_four_digits);
+        textFourDigits.setTextSize(textSize);
         if (textColor != null) {
             textFourDigits.setTextColor(textColor);
         }
         container.addView(textFourDigits);
 
         expDateText = new ExpDateText(context, attrs);
+        expDateText.setTextSize(textSize);
         expDateText.setId(R.id.cc_exp);
         if (includeExp) {
             expDateText.setDelegate(this);
@@ -147,6 +152,7 @@ public class CreditCardEntry extends HorizontalScrollView implements
 
         securityCodeText = new SecurityCodeText(context, attrs);
         securityCodeText.setId(R.id.cc_ccv);
+        securityCodeText.setTextSize(textSize);
         if (includeSecurity) {
             securityCodeText.setDelegate(this);
             if (!includeZip) {
@@ -172,6 +178,7 @@ public class CreditCardEntry extends HorizontalScrollView implements
 
         zipCodeText = new ZipCodeText(context, attrs);
         zipCodeText.setId(R.id.cc_zip);
+        zipCodeText.setTextSize(textSize);
         if (includeZip) {
             zipCodeText.setDelegate(this);
             container.addView(zipCodeText);
