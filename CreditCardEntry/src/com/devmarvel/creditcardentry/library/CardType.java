@@ -58,6 +58,15 @@ public enum CardType implements Serializable {
         this.typeRegex = typeRegex;
     }
 
+	public CardType from(String name) {
+		for (CardType creditCardType : values()) {
+			if (creditCardType.name.equals(name)) {
+				return creditCardType;
+			}
+		}
+		return INVALID;
+	}
+
     @Override
     public String toString() {
         return name;
