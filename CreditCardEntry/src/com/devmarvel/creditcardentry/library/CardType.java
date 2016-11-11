@@ -28,7 +28,7 @@ class CardRegex {
  * represents the type of card the user used
  */
 public enum CardType implements Serializable {
-    VISA("VISA", R.drawable.ic_card_visa, CardRegex.REGX_VISA, CardRegex.REGX_VISA_TYPE),
+    VISA("Visa", R.drawable.ic_card_visa, CardRegex.REGX_VISA, CardRegex.REGX_VISA_TYPE),
     MASTERCARD("MasterCard", R.drawable.ic_card_mastercard, CardRegex.REGX_MC, CardRegex.REGX_MC_TYPE),
     AMEX("American Express", R.drawable.ic_card_amex, CardRegex.REGX_AMEX, CardRegex.REGX_AMEX_TYPE),
     DISCOVER("Discover", R.drawable.ic_card_discover, CardRegex.REGX_DISCOVER, CardRegex.REGX_DISCOVER_TYPE),
