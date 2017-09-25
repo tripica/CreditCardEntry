@@ -8,7 +8,9 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.graphics.Point;
+import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Handler;
@@ -82,6 +84,7 @@ public class CreditCardEntry extends HorizontalScrollView implements
     private boolean animateOnError = true;
 
     private CardValidCallback onCardValidCallback;
+    private int textSize;
 
     @SuppressWarnings("deprecation")
     public CreditCardEntry(Context context, boolean includeExp, boolean includeSecurity, boolean includeZip, AttributeSet attrs, @SuppressWarnings("UnusedParameters") int style) {
@@ -95,7 +98,7 @@ public class CreditCardEntry extends HorizontalScrollView implements
         } else {
             textColor = null;
         }
-        int textSize = typedArray.getDimensionPixelSize(R.styleable.CreditCardForm_text_size, 19);
+        textSize = typedArray.getDimensionPixelSize(R.styleable.CreditCardForm_text_size, 19);
         typedArray.recycle();
 
         WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
@@ -137,6 +140,7 @@ public class CreditCardEntry extends HorizontalScrollView implements
         if (textColor != null) {
             textFourDigits.setTextColor(textColor);
         }
+        textFourDigits.setMinWidth(measureTextWidth(textFourDigits, "4242"));
         container.addView(textFourDigits);
 
         expDateText = new ExpDateText(context, attrs);
@@ -378,6 +382,15 @@ public class CreditCardEntry extends HorizontalScrollView implements
         if (view != null) {
             focusOnField(view);
         }
+    }
+
+    private int measureTextWidth(TextView textView, String text){
+        Paint p = new Paint();
+        Rect bounds = new Rect();
+        p.setTextSize(textSize);
+        p.getTextBounds(text, 0, text.length(), bounds);
+        textView.setText(text);
+        return bounds.width();
     }
 
     public void setCardNumberHint(String hint) {
