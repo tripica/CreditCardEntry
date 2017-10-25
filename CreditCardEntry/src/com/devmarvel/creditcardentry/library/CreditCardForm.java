@@ -109,7 +109,7 @@ public class CreditCardForm extends RelativeLayout {
 		layout.setLayoutParams(params);
 		layout.setPadding(0, 0, 0, 0);
 		//noinspection deprecation
-		layout.setBackgroundDrawable(inputBackground);
+//		layout.setBackgroundDrawable(inputBackground);
 
 		// set up the card image container and images
 		FrameLayout cardImageFrame = new FrameLayout(context);
