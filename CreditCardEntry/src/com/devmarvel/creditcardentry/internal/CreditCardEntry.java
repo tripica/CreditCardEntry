@@ -98,7 +98,7 @@ public class CreditCardEntry extends HorizontalScrollView implements
         } else {
             textColor = null;
         }
-        textSize = typedArray.getDimensionPixelSize(R.styleable.CreditCardForm_text_size, 19);
+        textSize = typedArray.getDimensionPixelSize(R.styleable.CreditCardForm_text_size, 26);
         typedArray.recycle();
 
         WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
@@ -215,6 +215,15 @@ public class CreditCardEntry extends HorizontalScrollView implements
                 focusOnField(creditCardText);
             }
         });
+    }
+
+    @Override
+    protected void onLayout(boolean changed, int l, int t, int r, int b) {
+        super.onLayout(changed, l, t, r, b);
+        int shiftPadding = r - l - cardImage.getWidth() - expDateText.getWidth() - securityCodeText.getWidth() - 20;
+        if (shiftPadding > 0) {
+            textFourDigits.setPadding(0, 0, shiftPadding, 0);
+        }
     }
 
     @Override
