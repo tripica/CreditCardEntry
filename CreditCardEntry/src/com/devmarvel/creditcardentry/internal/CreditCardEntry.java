@@ -220,7 +220,7 @@ public class CreditCardEntry extends HorizontalScrollView implements
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
         super.onLayout(changed, l, t, r, b);
-        int shiftPadding = r - l - cardImage.getWidth() - expDateText.getWidth() - securityCodeText.getWidth() - 20;
+        int shiftPadding = r - l - cardImage.getWidth() - expDateText.getWidth() - securityCodeText.getWidth() - 50;
         if (shiftPadding > 0) {
             textFourDigits.setPadding(0, 0, shiftPadding, 0);
         }
