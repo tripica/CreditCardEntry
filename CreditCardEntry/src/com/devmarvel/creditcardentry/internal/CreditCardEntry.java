@@ -140,7 +140,8 @@ public class CreditCardEntry extends HorizontalScrollView implements
         if (textColor != null) {
             textFourDigits.setTextColor(textColor);
         }
-        textFourDigits.setMinWidth(measureTextWidth(textFourDigits, "4242"));
+//        textFourDigits.setMinWidth();
+        textFourDigits.setWidth(measureTextWidth(textFourDigits, "4242"));
         container.addView(textFourDigits);
 
         expDateText = new ExpDateText(context, attrs);
@@ -222,7 +223,7 @@ public class CreditCardEntry extends HorizontalScrollView implements
         super.onLayout(changed, l, t, r, b);
         int shiftPadding = r - l - cardImage.getWidth() - expDateText.getWidth() - securityCodeText.getWidth() - 50;
         if (shiftPadding > 0) {
-            textFourDigits.setPadding(0, 0, shiftPadding, 0);
+            textFourDigits.setPadding(20, 0, shiftPadding, 0);
         }
     }
 

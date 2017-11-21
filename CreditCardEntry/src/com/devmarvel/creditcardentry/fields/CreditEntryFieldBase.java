@@ -6,10 +6,12 @@ import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.os.SystemClock;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 import android.support.v4.content.ContextCompat;
 import android.text.Editable;
 import android.text.InputType;
@@ -25,6 +27,7 @@ import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
 import android.view.inputmethod.InputConnectionWrapper;
 import android.widget.EditText;
+import android.support.v7.widget.AppCompatEditText;
 import android.widget.TextView;
 
 import com.devmarvel.creditcardentry.R;
@@ -32,7 +35,7 @@ import com.devmarvel.creditcardentry.internal.CreditCardFieldDelegate;
 
 import java.lang.reflect.Field;
 
-public abstract class CreditEntryFieldBase extends EditText implements
+public abstract class CreditEntryFieldBase extends AppCompatEditText implements
         TextWatcher, OnKeyListener, OnClickListener {
 
     CreditCardFieldDelegate delegate;
@@ -176,6 +179,12 @@ public abstract class CreditEntryFieldBase extends EditText implements
 			}
 		}
 	}
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    @Override
+    public int getAutofillType() {
+        return AUTOFILL_TYPE_NONE;
+    }
 
     @Override
     public Parcelable onSaveInstanceState() {
