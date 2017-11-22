@@ -140,8 +140,7 @@ public class CreditCardEntry extends HorizontalScrollView implements
         if (textColor != null) {
             textFourDigits.setTextColor(textColor);
         }
-//        textFourDigits.setMinWidth();
-        textFourDigits.setWidth(measureTextWidth(textFourDigits, "4242"));
+        textFourDigits.setMinEms(4);
         container.addView(textFourDigits);
 
         expDateText = new ExpDateText(context, attrs);
@@ -216,6 +215,11 @@ public class CreditCardEntry extends HorizontalScrollView implements
                 focusOnField(creditCardText);
             }
         });
+
+        setFocusable(creditCardText);
+        setFocusable(expDateText);
+        setFocusable(zipCodeText);
+        setFocusable(securityCodeText);
     }
 
     @Override
@@ -394,6 +398,7 @@ public class CreditCardEntry extends HorizontalScrollView implements
         }
     }
 
+    // TODO: to delete?
     private int measureTextWidth(TextView textView, String text){
         Paint p = new Paint();
         Rect bounds = new Rect();
@@ -660,6 +665,11 @@ public class CreditCardEntry extends HorizontalScrollView implements
                 return new SavedState[size];
             }
         });
+    }
+
+    private void setFocusable(View view) {
+        view.setFocusable(true);
+        view.setFocusableInTouchMode(true);
     }
 
     /** helper & hint setting **/
