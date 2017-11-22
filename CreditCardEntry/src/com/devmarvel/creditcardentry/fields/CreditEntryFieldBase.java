@@ -75,7 +75,7 @@ public abstract class CreditEntryFieldBase extends AppCompatEditText implements
 		addTextChangedListener(this);
 		setOnKeyListener(this);
 		setOnClickListener(this);
-		setPadding(50, 0, 50, 0);
+		setPadding(20, 0, 20, 0);
 
         setStyle(attrs);
     }
