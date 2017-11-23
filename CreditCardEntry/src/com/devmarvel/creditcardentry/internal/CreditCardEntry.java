@@ -20,6 +20,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.os.ParcelableCompat;
 import android.support.v4.os.ParcelableCompatCreatorCallbacks;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.util.SparseArray;
 import android.util.TypedValue;
 import android.view.Display;
@@ -29,6 +30,7 @@ import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -212,7 +214,8 @@ public class CreditCardEntry extends HorizontalScrollView implements
         textFourDigits.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                focusOnField(creditCardText);
+                // to check reason of strange scroll triggering
+//                focusOnField(creditCardText);
             }
         });
 
@@ -325,6 +328,7 @@ public class CreditCardEntry extends HorizontalScrollView implements
     }
 
     public void focusOnField(final CreditEntryFieldBase field, String initialFieldValue) {
+        Log.e("### focusOnField", field.toString());
         field.requestFocus();
         if(!scrolling) {
             scrolling = true;

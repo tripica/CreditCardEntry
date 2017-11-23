@@ -89,13 +89,9 @@ public class CreditCardForm extends RelativeLayout {
 	private void init(Context context, AttributeSet attrs, int style) {
 		// the wrapper layout
 		LinearLayout layout;
-		if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-			layout = new LinearLayout(context);
-		} else {
-			layout = new LinearLayout(context);
-		}
+		layout = new LinearLayout(context);
 
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+		if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
             //ignore RTL layout direction
             layout.setLayoutDirection(LAYOUT_DIRECTION_LTR);
         }
