@@ -83,6 +83,7 @@ public class CreditCardEntry extends HorizontalScrollView implements
 
     private boolean showingBack;
     private boolean scrolling = false;
+    private boolean validationFreeze = false;
     private boolean animateOnError = true;
 
     private CardValidCallback onCardValidCallback;
@@ -215,7 +216,7 @@ public class CreditCardEntry extends HorizontalScrollView implements
             @Override
             public void onClick(View v) {
                 // to check reason of strange scroll triggering
-//                focusOnField(creditCardText);
+                focusOnField(creditCardText);
             }
         });
 
@@ -329,6 +330,10 @@ public class CreditCardEntry extends HorizontalScrollView implements
 
     public void focusOnField(final CreditEntryFieldBase field, String initialFieldValue) {
         Log.e("### focusOnField", field.toString());
+        if(validationFreeze) {
+            Log.e("### focusOnField", "validationFreeze");
+            return;
+        }
         field.requestFocus();
         if(!scrolling) {
             scrolling = true;
@@ -365,6 +370,7 @@ public class CreditCardEntry extends HorizontalScrollView implements
     }
 
     private void scrollToTarget(int target, final Runnable after) {
+        Log.e("### scrollToTarget", "");
         int scrollX = getScrollX();
         if(scrollX == target) {
             if (after != null) after.run();
@@ -578,6 +584,15 @@ public class CreditCardEntry extends HorizontalScrollView implements
     }
 
     private void entryComplete(View clearField) {
+        validationFreeze = true;
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                validationFreeze = false;
+            }
+        }, 9000);
+
         hideKeyboard();
         clearField.clearFocus();
         if (onCardValidCallback != null) onCardValidCallback.cardValid(getCreditCard());
