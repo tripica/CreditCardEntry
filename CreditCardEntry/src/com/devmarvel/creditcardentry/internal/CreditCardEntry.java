@@ -226,14 +226,14 @@ public class CreditCardEntry extends HorizontalScrollView implements
         setFocusable(securityCodeText);
     }
 
-    @Override
-    protected void onLayout(boolean changed, int l, int t, int r, int b) {
-        super.onLayout(changed, l, t, r, b);
-        int shiftPadding = r - l - cardImage.getWidth() - expDateText.getWidth() - securityCodeText.getWidth() - 80;
-        if (shiftPadding > 0) {
-            textFourDigits.setPadding(20, 0, shiftPadding, 0);
-        }
-    }
+//    @Override
+//    protected void onLayout(boolean changed, int l, int t, int r, int b) {
+//        super.onLayout(changed, l, t, r, b);
+//        int shiftPadding = r - l - cardImage.getWidth() - expDateText.getWidth() - securityCodeText.getWidth() - 80;
+//        if (shiftPadding > 0) {
+//            textFourDigits.setPadding(20, 0, shiftPadding, 0);
+//        }
+//    }
 
     @Override
     public void onCardTypeChange(CardType type) {
