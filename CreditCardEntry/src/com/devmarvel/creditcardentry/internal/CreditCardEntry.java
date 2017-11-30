@@ -556,6 +556,14 @@ public class CreditCardEntry extends HorizontalScrollView implements
         int length = number.length();
         String digits = number.substring(length - 4);
         textFourDigits.setText(digits);
+        relayoutChildren(this);
+    }
+
+    private static void relayoutChildren(View view) {
+        view.measure(
+                View.MeasureSpec.makeMeasureSpec(view.getMeasuredWidth(), View.MeasureSpec.EXACTLY),
+                View.MeasureSpec.makeMeasureSpec(view.getMeasuredHeight(), View.MeasureSpec.EXACTLY));
+        view.layout(view.getLeft(), view.getTop(), view.getRight(), view.getBottom());
     }
 
     private void nextField(CreditEntryFieldBase currentField, String initialFieldValue) {
