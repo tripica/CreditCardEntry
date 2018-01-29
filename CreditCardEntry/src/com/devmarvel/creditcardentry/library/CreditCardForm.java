@@ -34,7 +34,7 @@ public class CreditCardForm extends RelativeLayout {
 	private Drawable inputBackground;
 	private boolean useDefaultColors;
 	private boolean animateOnError;
-	private String cardNumberHint = "1234 5678 9012 3456";
+	private String cardNumberHint;
 
 	public CreditCardForm(Context context) {
 		this(context, null);
@@ -76,7 +76,7 @@ public class CreditCardForm extends RelativeLayout {
 			}
 
 			// defaults if not set by user
-			if(cardNumberHint == null) cardNumberHint = "1234 5678 9012 3456";
+			if(cardNumberHint == null) cardNumberHint = context.getResources().getString(R.string.CreditCardFormCardNumberHint);
 			if(inputBackground == null) {
 				//noinspection deprecation
 				inputBackground = context.getResources().getDrawable(R.drawable.background_white);

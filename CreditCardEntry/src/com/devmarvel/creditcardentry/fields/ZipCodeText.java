@@ -31,7 +31,7 @@ public class ZipCodeText extends CreditEntryFieldBase {
 		super.init();
 		maxChars = 5;
 		setMaxChars(maxChars);
-		setHint("   ZIP   ");
+		setHint(R.string.ZipCodeFieldHint);
 	}
 
 	@Override

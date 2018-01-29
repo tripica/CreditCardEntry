@@ -34,7 +34,7 @@ public class SecurityCodeText extends CreditEntryFieldBase {
 
 	void init() {
 		super.init();
-		setHint("CVV");
+		setHint(R.string.SecurityCodeFieldHint);
 	}
 
 	/* TextWatcher Implementation Methods */

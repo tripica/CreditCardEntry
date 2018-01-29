@@ -30,7 +30,7 @@ public class ExpDateText extends CreditEntryFieldBase {
 
 	void init() {
 		super.init();
-		setHint("MM/YY");
+		setHint(R.string.ExpDateFieldHint);
 	}
 
 	/* TextWatcher Implementation Methods */
