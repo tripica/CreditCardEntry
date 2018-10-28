@@ -1,18 +1,19 @@
 buildscript {
     repositories {
         google()
-        mavenLocal()
-        mavenCentral()
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.0.1'
+        classpath 'com.android.tools.build:gradle:3.2.0'
         classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
     }
 }
 
-repositories {
-    mavenCentral()
+allprojects {
+    repositories {
+        google()
+        jcenter()
+    }
 }
 
 task wrapperCC(type: Wrapper) {
