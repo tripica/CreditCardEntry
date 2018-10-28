@@ -1,12 +1,13 @@
 buildscript {
     repositories {
+        google()
         mavenLocal()
         mavenCentral()
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.3'
-        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.4.1'
+        classpath 'com.android.tools.build:gradle:3.0.1'
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
     }
 }
 
@@ -14,6 +15,6 @@ repositories {
     mavenCentral()
 }
 
-task wrapper(type: Wrapper) {
-        gradleVersion = '3.1'
+task wrapperCC(type: Wrapper) {
+        gradleVersion = '4.2.10'
 }
